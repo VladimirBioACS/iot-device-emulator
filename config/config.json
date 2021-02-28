@@ -1,0 +1,9 @@
+{
+	"brocker":"signaliodev.cloud.shiftr.io",
+	"password":"ZBu5mdpflKmchxD4",
+	"username":"signaliodev",
+	"topic":"sensor/analog",
+	"device_id":"test-sensor-device",
+	"port":1883,
+	"custom_payload":"hello"
+}
