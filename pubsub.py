@@ -20,8 +20,8 @@ port = config['port']
 
 client = mqtt.Client(alias)
 
-json_payload_digital_sensor = "{\"props\": [{\"name\": \"actuator\",value:" + str(random.randint(0,1)) + ",\"type\": \"request\"}]}"
-json_payload_custom_payload_sensor = "{\"props\": [{\"name\": \"actuator\",\"value\:" + config["custom_payload"] + ",\"type\": \"request\"}]}"
+json_payload_digital_sensor = "{\"props\": [{\"name\": \"sensor\",value:" + str(random.randint(0,1)) + ",\"type\": \"request\"}]}"
+json_payload_custom_payload_sensor = "{\"props\": [{\"name\": \"sensor\",\"value\:" + config["custom_payload"] + ",\"type\": \"request\"}]}"
 
 
 def on_connect(client, userdata, flags, rc):
@@ -43,10 +43,12 @@ def on_message_from_server(client, userdata, message):
 
 def pub_sub_client():
     try:
-    	json_payload_analog_sensor = "{\"props\": [{\"name\": \"sensor\",\"value\":" + str(random.randint(0,1024)) + ",\"type\": \"request\"}]}"
+        print(" ")
+        x = input("Enter value")
+        json_payload_analog_sensor = "{\"props\": [{\"name\": \"sensor\",\"value\":" + str(x) + ",\"type\": \"request\"}]}"
         client.publish(topic, payload=json_payload_analog_sensor, qos=1, retain=False)
         print("to exit press Ctrl^C")
-        time.sleep(5)
+        #time.sleep(5)
     except Exception as e:
         client.loop_stop()
         client.disconnect()
